@@ -10,10 +10,10 @@ const upload = multer({ dest: 'uploads/' });
 
 // Função para chamar a API do ChatGPT
 const chatGPTRequest = async (prompt: string): Promise<string> => {
-    const response = await axios.post('https://api.openai.com/v1/completions', {
-        model: 'gpt-4',
+    const response = await axios.post('https://api.openai.com/v1/chat/completions', {
+        model: 'gpt-3.5-turbo-16k',
         prompt: prompt,
-        max_tokens: 150,
+        max_tokens: 500,
     }, {
         headers: {
             'Authorization': `Bearer ${apiKey}`,

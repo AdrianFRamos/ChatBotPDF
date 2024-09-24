@@ -9,6 +9,16 @@ services:
     volumes:
       - ./backend/uploads:/app/uploads
 
+  frontend:
+    build: ./frontend/chat-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/chat-frontend
+      - /chat-frontend/node_modules
+
   file-processor:
     build: ./file-processor
     ports:

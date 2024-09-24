@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "esnext",
+    "target": "ESNext",
+    "module": "NodeNext",
     "baseUrl": "./",
-    "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
     "paths": {
       "@/*": [
         "src/*"
