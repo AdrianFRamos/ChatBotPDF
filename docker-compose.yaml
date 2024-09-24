@@ -1,0 +1,31 @@
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - file-processor
+    volumes:
+      - ./backend/uploads:/app/uploads
+
+  file-processor:
+    build: ./file-processor
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend/uploads:/app/uploads
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    volumes:
+      - mongodb_data:/data/db
+      - ./database/mongod.conf:/etc/mongod.conf  
+    command: ["mongod", "--config", "/etc/mongod.conf"]
+    ports:
+      - "27017:27017"
+
+volumes:
+  mongodb_data:
+
